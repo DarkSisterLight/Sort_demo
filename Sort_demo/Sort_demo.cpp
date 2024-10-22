@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 #include "utils.h"
-#include "bubble_sort.h"
+#include "sort.cpp"
 
 using namespace std;
 
-const int arr_size = 20;
+const int arr_size = 5;
 
 int main() {
 	setlocale(LC_ALL, "RU");
@@ -26,7 +26,7 @@ int main() {
 	switch (x) {
 	case 1: {
 		puts("Выбрана Bubble Sort");
-		//bubble_sort(array, arr_size);
+		bubble_sort(array, arr_size);
 		break;
 	}
 	case 2:
@@ -127,10 +127,9 @@ int main() {
 		break;
 	}
 
-	for (int i = 0; i < arr_size; i++) {
-		cout << array[i] << " ";
-	}
-	cout << endl;
+	puts("Отсортированный массив: ");
+	print_array(array, arr_size);
+	puts("--------------------------------------------");
 
 	return 0;
 }
