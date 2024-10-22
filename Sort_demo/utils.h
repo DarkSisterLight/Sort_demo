@@ -22,3 +22,9 @@ void print_array(int* array, int arr_size) {
 	}
 	printf("]\n");
 }
+
+void swap2(int* i, int* j) {
+	int t = *i;
+	*i = *j;
+	*j = t;
+}
