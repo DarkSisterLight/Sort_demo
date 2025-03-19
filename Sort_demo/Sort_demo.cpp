@@ -2,18 +2,19 @@
 #include <stdio.h>
 
 #include "utils.h"
-#include "sort.cpp"
+#include "bubble_sort.cpp"
+#include "sheyker_sort.cpp"
+#include "selection_sort.cpp"
+#include "insertion_sort.cpp"
 
 using namespace std;
 
-const int arr_size = 5;
+const int arr_size = 50;
 
 int main() {
 	setlocale(LC_ALL, "RU");
 
-	short x;
-	bool sort_or_not = true;
-	int array[arr_size] = {}, right = arr_size, left = 1, min_elem, random_radix = 100;
+	int array[arr_size] = {}, random_radix = 100;
 
 	random_array(array, arr_size, random_radix);
 	puts("Исходный массив: ");
@@ -21,54 +22,25 @@ int main() {
 	puts("--------------------------------------------");
 
 	puts("Выбери сортировку: ");
+	short x;
 	cin >> x;
 
 	switch (x) {
-	case 1: {
+	case 1: 
 		puts("Выбрана Bubble Sort");
 		bubble_sort(array, arr_size);
 		break;
-	}
 	case 2:
 		puts("Выбрана Sheyker Sort");
-		do {
-			sort_or_not = true;
-			for (int i = left; i < right; i++) {
-				if (array[i - 1] > array[i]) {
-					swap(array[i - 1], array[i]);
-					sort_or_not = false;
-				}
-			}
-			right--;
-			for (int i = right; i >= left; i--) {
-				if (array[i] < array[i - 1]) {
-					swap(array[i], array[i - 1]);
-					sort_or_not = false;
-				}
-			}
-			left++;
-		} while (sort_or_not == false);
+		sheyker_sort(array, arr_size);
 		break;
 	case 3:
 		puts("Выбрана Selection Sort");
-		for (int i = 0; i < arr_size; i++) {
-			min_elem = i;
-			for (int j = i + 1; j < arr_size; j++) {
-				if (array[j] < array[min_elem]) {
-					min_elem = j;
-				}
-
-			}
-			swap(array[i], array[min_elem]);
-		}
+		selection_sort(array, arr_size);
 		break;
 	case 4:
 		puts("Выбрана Isertion Sort");
-		for (int i = 1; i < arr_size; i++) {
-			for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
-				swap(array[j - 1], array[j]);
-			}
-		}
+		insertion_sort(array, arr_size);
 		break;
 		//case 5:
 		//{
